@@ -1,6 +1,4 @@
 <?php
-  
-  header("Access-Control-Allow-Origin: *");
   $conn = new mysqli("localhost","root","","trees");
 
   if($conn->connect_error)
@@ -13,7 +11,6 @@
   $city = $_POST["city"];
   $address = $_POST["address"];
   $password = $_POST["password"];
-  $con_pass = $_POST["con_pass"];
 
   $register = "INSERT INTO user_data (name,username,email,state,city,address,password) VALUES('$name','$username','$email','$state','$city','$address','$password')";
 

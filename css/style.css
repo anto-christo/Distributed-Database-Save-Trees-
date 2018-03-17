@@ -1,0 +1,20 @@
+#carouselExampleIndicators{
+	padding-top: 100px;
+	padding-bottom: 10px;
+}
+
+body {
+	background-color:#E5E7E9;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    height: 50px;
+    width: 30px;
+    outline: white;
+    background-color:black;
+    border: 1px solid black;
+}
+
+.jumbotron{
+	padding-top: 80px;
+}
