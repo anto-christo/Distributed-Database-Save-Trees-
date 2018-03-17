@@ -1,3 +1,41 @@
+<?php
+include('dbconfig.php'); ?>
+
+
+
+  <?php 
+    if (isset($_POST['submit']))
+     {
+    $state=$_POST['state'];
+    $city=$_POST['city'];
+    $address=$_POST['address'];
+    $people=$_POST['people'];
+
+    $result=mysqli_query($con,"INSERT INTO actions (state,city,address,people) VALUES ('$state', '$city','$address','$people')")or die (mysqli_error($con));
+    
+     if($result){
+     ?>
+
+      <script>
+      alert('Signed in');
+      window.location.href='action.php';
+      </script>
+    <?php }
+    else if (!$result) {
+      
+      ?>
+      <script>
+         alert('An account already exists with this username');
+      window.location.href='action.php';
+      </script>
+      <?php
+       }   
+    
+    }
+  ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -56,14 +94,14 @@
     <center>
             <div class="container" style="width:50%;border: 1px solid grey;padding:2%">
                 <h3>Action</h3><br>
-        
-                <input type="text" id="state" placeholder="State" required><br><br>
-                <input type="text" id="city" placeholder="City" required><br><br>
-                <input type="text" id="add" placeholder="Address" required><br><br>
-                <input type="text" id="voln" placeholder="no of people" required><br><br>
-                <input type="time" id="time" placeholder="Time" required><br><br>
-                <input type="date" id="date" placeholder="Date" required><br><br>
-                <button class="btn btn-success" id="add_btn">ADD</button>
+        <form action="Action.php" method="post">
+                <input type="text" id="state" placeholder="State" name="state" required><br><br>
+                <input type="text" id="city" placeholder="City" name="city" required><br><br>
+                <input type="text" id="add" placeholder="Address" name="address" required><br><br>
+                <input type="text" id="voln" placeholder="no of people" name="people" required><br><br>
+                <input type="time" id="time" placeholder="Time" ><br><br>
+                <input type="date" id="date" placeholder="Date" ><br><br>
+                <button class="btn btn-success" id="add_btn" name="submit" type="submit">ADD</button>
 
             </div>
         </center>
