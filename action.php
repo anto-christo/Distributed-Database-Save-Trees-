@@ -10,8 +10,10 @@ include('dbconfig.php'); ?>
     $city=$_POST['city'];
     $address=$_POST['address'];
     $people=$_POST['people'];
+    $time=$_POST['time'];
+    $date=$_POST['date'];
 
-    $result=mysqli_query($con,"INSERT INTO actions (state,city,address,people) VALUES ('$state', '$city','$address','$people')")or die (mysqli_error($con));
+    $result=mysqli_query($con,"INSERT INTO actions (state,city,address,people,time,date) VALUES ('$state', '$city','$address','$people','$time','$date')")or die (mysqli_error($con));
     
      if($result){
      ?>
@@ -99,8 +101,8 @@ include('dbconfig.php'); ?>
                 <input type="text" id="city" placeholder="City" name="city" required><br><br>
                 <input type="text" id="add" placeholder="Address" name="address" required><br><br>
                 <input type="text" id="voln" placeholder="no of people" name="people" required><br><br>
-                <input type="time" id="time" placeholder="Time" ><br><br>
-                <input type="date" id="date" placeholder="Date" ><br><br>
+                <input type="time" id="time" placeholder="Time" name="time" required><br><br>
+                <input type="date" id="date" placeholder="Date" name="date" required><br><br>
                 <button class="btn btn-success" id="add_btn" name="submit" type="submit">ADD</button>
 
             </div>
@@ -115,7 +117,7 @@ include('dbconfig.php'); ?>
           <div class="footer-copyright text-center">
               <div class="container-fluid">
                 <h3> Save trees: make India a green country.</h3>
-                <p>follows us on Instagram, tweeter and contact us on:savetree@dbit.in</p>
+                <p>Follows us on Instagram, Twitter or contact us on:savetree@dbit.in</p>
               </div>
           </div>
     </footer>
