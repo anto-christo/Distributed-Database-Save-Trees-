@@ -104,7 +104,7 @@ include('dbconfig.php'); ?>
                 <input type="time" id="time" placeholder="Time" name="time" required><br><br>
                 <input type="date" id="date" placeholder="Date" name="date" required><br><br>
                 <button class="btn btn-success" id="add_btn" name="submit" type="submit">ADD</button>
-
+        </form>
             </div>
         </center>
     

@@ -1,3 +1,44 @@
+<?php
+include('dbconfig.php'); ?>
+
+
+
+  <?php 
+    if (isset($_POST['submit']))
+     {
+    $bankName=$_POST['bankName'];
+    $card=$_POST['card'];
+    $amt=$_POST['amt'];
+    
+    $result=mysqli_query($con,"INSERT INTO donate (bankName,card,amt) VALUES ('$bankName', '$card','$amt')")or die (mysqli_error($con));
+    
+     if($result){
+     ?>
+
+      <script>
+      alert('Donation done');
+      window.location.href='donation.php';
+      </script>
+    <?php }
+    else if (!$result) {
+      
+      ?>
+      <script>
+         alert('Unexpected error');
+      window.location.href='donation.php';
+      </script>
+      <?php
+       }   
+    
+    }
+  ?>
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -60,11 +101,12 @@
     </div>
     <div class = "voluntare">
         <h3>Please enter the Amount you want to Donate</h3>
-        <input type="text" id="bankName" placeholder="Bank Name" required><br><br> 
-        <input type="text" id="card" placeholder="card No" required><br><br>
-        <input type="text" id="amt" placeholder="Amount" required>
-        <button class="btn btn-success" id="amtclick">ENTER</button>
-
+        <form action="donation.php" method="post">
+        <input type="text" id="bankName" placeholder="Bank Name" name="bankName" required><br><br> 
+        <input type="text" id="card" placeholder="card No" name="card" required><br><br>
+        <input type="text" id="amt" placeholder="Amount" name="amt" required>
+        <button class="btn btn-success" id="amtclick" name="submit" type="submit">ENTER</button>
+        </form>
         </div>
     </div>
 </center>
