@@ -1,3 +1,40 @@
+<?php
+include('dbconfig.php'); ?>
+
+
+
+  <?php 
+    if (isset($_POST['submit']))
+     {
+    $addr=$_POST['addr'];
+    $email=$_POST['email'];
+    $pno=$_POST['pno'];
+    
+    $result=mysqli_query($con,"INSERT INTO complain (addr,email,pno) VALUES ('$addr', '$email','$pno')")or die (mysqli_error($con));
+    
+     if($result){
+     ?>
+
+      <script>
+      alert('Compaint done');
+      window.location.href='complain.php';
+      </script>
+    <?php }
+    else if (!$result) {
+      
+      ?>
+      <script>
+         alert('Not done.');
+      window.location.href='complain.php';
+      </script>
+      <?php
+       }   
+    
+    }
+  ?>
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,12 +90,14 @@
             <div>
                 <h3>To keep your info private. Please click the hide button</h3>
                 
-                <textarea  id ="cadd" placeholder="address" required></textarea><br><br>
-                <input type="email"  id ="email" placeholder="Email_Address" required><br><br>
-                <input type="number" id="contact" placeholder="contact_no" required ><br><br>
-                <input type="file" name="pic" accept="image/*"><br><br>
-                <button class="btn btn-success">Submit</button>
+             <form action="complain.php" method="post">
 
+                <textarea  id ="cadd" placeholder="address" name="addr" required></textarea><br><br>
+                <input type="email"  id ="email" placeholder="Email_Address" name="email" required><br><br>
+                <input type="number" id="contact" placeholder="contact_no" name="pno" required ><br><br>
+                <input type="file" name="pic" accept="image/*"><br><br>
+                <button class="btn btn-success" name="submit" type="submit">Submit</button>
+             </form>
             </div>
 
 
